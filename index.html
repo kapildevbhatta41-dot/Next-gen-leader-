@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#9271E8">
+  <meta name="description" content="Next Gen Leader: a supportive wellbeing space for international students.">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+  <title>Next Gen Leader</title>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#home" data-view="home"><span class="brand-mark">✦</span> Next Gen Leader</a>
+      <div class="top-actions"><select id="languageSelect" aria-label="Select language"></select><button id="themeToggle" class="icon-btn" aria-label="Toggle colour theme">◐</button></div>
+    </header>
+
+    <section id="home" class="view active">
+      <div class="page-heading"><p class="eyebrow">YOUR WELLBEING SPACE</p><h1>Hello, you.</h1><p>Small support for life far from home.</p></div>
+      <article class="hero-card">
+        <div><p class="eyebrow">DAILY CHECK-IN</p><h2>How are you feeling today?</h2><p>A private moment to notice what you need.</p></div>
+        <button class="primary-btn" data-go="chat">Start a conversation <span>→</span></button>
+      </article>
+      <section><div class="section-title"><h2>Your wellbeing</h2><span>Today</span></div>
+        <div class="feature-grid">
+          <button class="feature-card blue" data-go="summary"><span class="feature-icon">◌</span><strong>Wellbeing<br>summary</strong><small>Reflect on your check-in</small></button>
+          <button class="feature-card purple" data-go="entertainment"><span class="feature-icon">☼</span><strong>Relax &<br>play</strong><small>Take a gentle reset</small></button>
+        </div>
+      </section>
+      <section><div class="section-title"><h2>Explore support</h2></div>
+        <div class="shortcut-list">
+          <button data-go="professionals"><span class="shortcut-icon mint">☻</span><span><strong>Find a professional</strong><small>Explore fictional demo profiles</small></span><b>›</b></button>
+          <button data-go="emergency"><span class="shortcut-icon coral">!</span><span><strong>Emergency support</strong><small>Find official local emergency help</small></span><b>›</b></button>
+        </div>
+      </section>
+    </section>
+
+    <section id="chat" class="view">
+      <div class="page-heading"><p class="eyebrow">AI WELLBEING AGENT</p><h1>Talk with your guide</h1><p>One supportive question at a time. This is not medical care.</p></div>
+      <button class="emergency-strip" data-go="emergency">Need urgent human support? Open emergency help</button>
+      <section class="chat-card"><div class="chat-status" id="voiceStatus" aria-live="polite"><span id="voiceDot" class="status-dot"></span> Text or voice — share at your own pace.</div><div id="messages" class="messages" aria-live="polite"></div>
+        <div id="recordingBar" class="recording-bar" hidden><span class="recording-pulse">●</span><span>Listening…</span><button id="stopRecordButton" type="button">Stop recording</button></div>
+        <form id="chatForm" class="chat-input"><div class="input-shell"><input id="messageInput" placeholder="Type your message…" aria-label="Your message"><button id="micButton" type="button" class="mic-btn" aria-label="Start voice input">🎤</button></div><button class="send-btn" aria-label="Send message">➤</button></form>
+      </section>
+    </section>
+
+    <section id="summary" class="view">
+      <div class="page-heading"><p class="eyebrow">YOUR WELLBEING</p><h1>Wellbeing summary</h1><p>A supportive reflection, never a diagnosis.</p></div>
+      <div id="summaryEmpty" class="summary-empty" hidden><span>✦</span><h2>Your wellbeing journey starts here!</h2><p>Share how you feel in a check-in or complete a breathing session to see your personal reflections here.</p><button class="primary-btn" data-start-checkin>Start mood check-in</button></div>
+      <div id="summaryContent" hidden>
+        <div class="mood-overview"><article><small>CURRENT MOOD</small><strong id="currentMood">—</strong><span id="currentMoodDetail">No check-in yet</span></article><article><small>BREATHING</small><strong id="breathingCount">0</strong><span>completed sessions</span></article><article><small>CHECK-INS</small><strong id="checkinCount">0</strong><span>saved reflections</span></article></div>
+        <article class="summary-status"><h2 id="summaryLevel">General wellbeing support</h2><p id="summaryNarrative"></p></article>
+        <article class="wellbeing-chart"><div class="section-title"><h2>Recent mood history</h2><span>Latest check-ins</span></div><div id="moodChart" class="mood-chart" aria-label="Recent mood history"></div></article>
+        <article class="insight-card"><span class="insight-icon">✦</span><div><h2>Recent conversation insight</h2><p id="conversationInsight"></p></div></article>
+        <article class="suggestion-card"><h2>Personalized next step</h2><p id="nextStep"></p></article>
+        <button class="primary-btn full" data-start-checkin>Check in again</button>
+      </div>
+    </section>
+
+    <section id="entertainment" class="view">
+      <div class="page-heading"><p class="eyebrow">A GENTLE RESET</p><h1>Guided breathing</h1><p>Take two quiet minutes just for yourself.</p></div>
+      <article class="breathing-card">
+        <div id="breathingCircle" class="breathing-circle" aria-live="polite"><span id="breathPhase">Ready</span></div>
+        <div class="breathing-readout"><strong id="breathInstruction">Settle into a comfortable position.</strong><span id="breathTimer">02:00 remaining</span></div>
+        <div class="breathing-steps"><span>1. Breathe in</span><span>2. Hold</span><span>3. Breathe out</span></div>
+        <div class="breath-controls"><button id="breatheButton" class="primary-btn">Start</button><button id="pauseButton" class="soft-btn" disabled>Pause</button><button id="restartButton" class="soft-btn">Restart</button></div>
+        <button id="stopBreathingButton" class="text-btn">Stop exercise</button>
+      </article>
+    </section>
+
+    <section id="professionals" class="view">
+      <div class="page-heading"><p class="eyebrow">FIND SUPPORT</p><h1>Available professionals</h1><p>Prototype demonstration only. These are fictional profiles, not verified clinicians or real contact listings.</p></div>
+      <div id="professionalList" class="professional-list"></div>
+    </section>
+
+    <section id="emergency" class="view">
+      <div class="page-heading"><p class="eyebrow danger">EMERGENCY ASSISTANCE</p><h1>Get support now</h1><p>If you may hurt yourself or are in immediate danger, contact local emergency services immediately.</p></div>
+      <label class="select-label" for="countrySelect">Your current country</label><select id="countrySelect"></select>
+      <article class="emergency-card"><p>CALL NOW</p><h2 id="emergencyNumber"></h2><span id="emergencyDescription"></span><a id="callLink" class="call-btn" href="#">Call emergency services</a></article>
+      <article class="info-card"><h2>Hospital emergency department</h2><p id="hospitalInfo"></p><hr><h3>Language support</h3><p>Ask the call handler for English or interpreter support where available.</p><a id="officialLink" target="_blank" rel="noopener">Open official emergency resource ↗</a></article>
+      <button class="soft-btn full" id="trustedButton">Contact a trusted person</button>
+    </section>
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <button data-go="home" class="active"><span>⌂</span>Home</button><button data-go="chat"><span>✦</span>AI Agent</button><button data-go="summary"><span>◌</span>Wellbeing</button><button data-go="professionals"><span>☻</span>Professionals</button><button data-go="emergency"><span>!</span>Emergency</button>
+    </nav>
+  </main>
+  <dialog id="contactDialog" class="contact-dialog">
+    <button id="closeContactDialog" class="dialog-close" aria-label="Close contact details">×</button>
+    <p class="eyebrow">FICTIONAL DEMO CONTACT</p><h2 id="dialogName"></h2><p id="dialogRole"></p>
+    <div class="contact-details"><span>☎</span><div><small>Demo phone</small><strong id="dialogPhone"></strong></div></div>
+    <div class="contact-details"><span>✉</span><div><small>Demo email</small><strong id="dialogEmail"></strong></div></div>
+    <div class="dialog-actions"><a id="dialogCall" class="soft-btn" href="#">Call (demo)</a><a id="dialogEmailLink" class="soft-btn" href="#">Email (demo)</a></div>
+    <button id="dialogBook" class="primary-btn full">Book consultation (demo)</button>
+  </dialog>
+  <dialog id="moodDialog" class="mood-dialog">
+    <button id="closeMoodDialog" class="dialog-close" aria-label="Close mood check-in">×</button>
+    <p class="eyebrow">MOOD CHECK-IN</p><div class="checkin-progress"><i id="checkinProgress"></i></div><span id="checkinStep" class="checkin-step">Step 1 of 3</span>
+    <h2 id="checkinQuestion">How are you feeling today?</h2><p id="checkinHint">Choose a mood that feels closest, or write your own words.</p>
+    <div id="moodOptions" class="mood-options"></div>
+    <textarea id="checkinText" placeholder="Write in your own words (optional)" aria-label="Your check-in response"></textarea>
+    <div class="checkin-actions"><button id="skipCheckinQuestion" class="soft-btn">Skip</button><button id="nextCheckinQuestion" class="primary-btn">Continue</button></div>
+  </dialog>
+  <div id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
